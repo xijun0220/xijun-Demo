@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-with, initial-scale=1.0">
+    <title>Document</title>
+    <base href="/public/">
+    <script src="./js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+     <span v-bind:title='showLable'>动态修改title属性</span>
+     <span title='showLable'>动态修改title属性</span>
+     <span :title='showLable'>动态修改title属性</span>
+     <img :src="imgUrl" alt="" @click='imgUrl="./img/03.jpg"'> 
+     <button :disabled='Math.random()>0.5'>按钮</button>
+     <button :disabled='true'>按钮</button>
+     <button :disabled='false'>按钮</button>
+     <input type="text" :readonly='formEnable'>
+     <textarea name="" :disabled='formEnable' id="" cols="30" rows="10"></textarea>
+    <input type="button" value="切换表单编辑状态" :value='formEnable?"启用":"禁用"' @click='formEnable=!formEnable'>
+    <button @click='changeOption'>切换下拉选项</button>
+    <select name="" id="">
+        <option :selected='index==1' value="">男</option>
+        <option :selected='index==2' value="">女</option>
+        <option :selected='index==3' value="">保密</option>
+    </select>
+    </div>
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                showLable:'鼠标移入显示的内容',
+                imgUrl:'./img/01.jpg',
+                formEnable:false,
+                index:1
+            },
+            methods:{
+                changeOption(){
+                    this.index++;
+                    if (this.index>3) {
+                        this.index=1;
+                    }
+                }
+            }
+            
+        })
+        
+    </script>
+</body>
+</html>

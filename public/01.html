@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-with, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+    <!-- <h2><%=msg%></h2> -->
+    <h2>VUE:{{msg}}</h2>
+    <h2 v-text='msg'>vue:</h2>
+    <p>
+    <h2>插值:{{msg2}}</h2>
+    <h2 v-text='msg2'>v-text</h2>
+    <h2 v-html='msg2'>v-html</h2>
+    </p>
+    </div>
+    <script>
+        //创建一个数组的对象赋值给arr变量
+        // var d1 = new Date();
+        // console.log(d1);
+        // setTimeout(()=>{
+        //     d2=new Date();
+        //     console.log(d2);
+        // },1000)
+        // var arr = new Array();
+        //轮播插件（自定义的对象）
+        // var swiper = new Swiper({el:'#app'});
+        //如何启动vue：通过new关键字，创建了一个Vue对象
+        //如何创建自定义的类
+        let app = new Vue({
+            //el:element应用的根目录
+            el:'#app',//模板在哪里
+            //data属性：vue应用的数据
+            data:{
+                msg:"hello world",
+                msg2:'<i>hello v-html</i>'
+            }
+        })
+        setTimeout(function(){
+            app.msg="hello vue!!"
+        },2000)
+    </script>
+</body>
+</html>

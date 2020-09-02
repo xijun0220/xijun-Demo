@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+<body>
+    <!-- <div id="a">
+    <p>度娘为您找到相关结果约{{number}}个</p>
+    <p>度娘为您找到相关结果约<span v-text='number'></span>个</p>
+    <p @click='number=Math.ceil(Math.random()*900+100)'>度娘为您找到相关结果约{{number}}个</p>
+    <p v-on:click='number=Math.ceil(Math.random()*900+100)'>度娘为您找到相关结果约<span v-text='number'></span>个</p>
+    </div> -->
+    <div id="a2">
+    <p>度娘为您找到相关结果约{{number}}个</p>
+    <p>度娘为您找到相关结果约<span v-html='number'></span>个</p>
+    <p @click='number=Math.random()>0.5?`<b>${Math.ceil(Math.random()*900+100)}</b>`:`<i>${Math.ceil(Math.random()*900+100)}</i>`'>度娘为您找到相关结果约<span v-html='number'></span>个</p>
+    <p @click='clickHandler'>度娘为您找到相关结果约<span v-html='number'></span>个</p>
+    <p @click='fun4'>测试</p>
+    </div>
+    <script>
+        //100-1000的整数
+        let a = new Vue({
+            el:"#a",
+            data:{
+                number:Math.ceil(Math.random()*900+100),
+            }
+        })
+        let a2 = new Vue({
+            el:"#a2",
+            //a2的所有数据
+            data:{
+                number:Math.random()>0.5?`<b>${Math.ceil(Math.random()*900+100)}</b>`:`<i>${Math.ceil(Math.random()*900+100)}</i>`,
+            },
+            //a2的所有方法
+            methods:{
+                clickHandler:function(){
+                    //在方法中访问变量，需要使用this关键字
+                    this.number=Math.ceil(Math.random()*1000);
+                },
+                //ES6
+                fun4(){
+                    alert(1);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

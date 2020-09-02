@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-with, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+        <input type="text" v-model='name' name="" id="">
+        <p>我最喜欢的老师是:{{name}}</p>
+        </div>
+        <div>
+            显示<input type="radio" name="1" checked='checked' value=true 
+            @click=pick()>
+            隐藏<input type="radio" name="1" value=false @click=pick()>
+            <img src="./img/04.jpg" v-if='pick1' alt="">
+        </div>
+        <div>
+            <select v-model='imgUrl' name="" id="">
+                <option  value="./img/01.jpg" >图1</option>
+                <option  value="./img/03.jpg" >图2</option>
+                <option  value="./img/04.jpg" >图3</option>
+            </select>
+            <img :src="imgUrl" alt="">
+        </div>
+    </div>
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                name:'请输入',
+                pick1:true,
+                imgUrl:'./img/01.jpg'
+            },
+            methods:{
+              pick:function(){
+                if(this.pick1==true){
+                this.pick1=false;
+            }else{
+                this.pick1=true;
+                }
+               },
+            }
+        })
+        
+    </script>
+</body>
+</html>

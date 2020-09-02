@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+<body>
+    <div id="a">
+    <p>度娘为您找到相关结果约{{number}}个</p>
+    <p>度娘为您找到相关结果约<span v-text='number'></span>个</p>
+    <p @click='number=Math.ceil(Math.random()*900+100)'>度娘为您找到相关结果约{{number}}个</p>
+    <p v-on:click='number=Math.ceil(Math.random()*900+100)'>度娘为您找到相关结果约<span v-text='number'></span>个</p>
+    </div>
+    <script>
+        //100-1000的整数
+        let a = new Vue({
+            el:"#a",
+            data:{
+                number:Math.ceil(Math.random()*900+100),
+            }
+        })
+    </script>
+</body>
+</html>

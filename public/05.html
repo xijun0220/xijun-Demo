@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-with, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+    <h2 v-once>{{msg}}</h2>
+    <h3 v-pre>{{msg}}</h3>
+    <div>
+        表达式{{count+1}}
+    </div>
+    <div @click='count++'>三元运算符,count>110?{{count>110?'ture':'false'}}</div>
+    <div>
+        调用对象的方法：{{msg.substr(2,2)}}
+    </div>
+    <div>
+        反转文字：{{msg2.split('').reverse().join('')}}
+    </div>
+    <div>
+        插值中不能使用语句{{if(msg){}}}
+    </div>
+    </div>
+    <script>
+        let app = new Vue({
+            
+            el:'#app',
+            
+            data:{
+                msg:'hello',
+                msg2:'he is a cat',
+                count:99
+            },
+            methods:{
+                function(params){
+                    
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>

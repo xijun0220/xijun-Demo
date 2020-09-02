@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-with, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+    <button @click='show=!show'>显示隐藏图片</button>
+    <img v-if='show' src="./img/04.jpg" alt="" >
+    <img v-show='show' src="./img/04.jpg" alt="" >
+    <div>性别
+        <span v-if='sex==1'>男</span>
+        <span v-else-if='sex==0'>女</span>
+        <span v-else>保密</span>
+    </div>
+    <div>
+        <input type="number" v-model='grade' min="0" max="100" step="10" name="" id="">
+        <div>成绩
+        <span v-if='grade>=90'>优</span>
+        <span v-else-if='grade<90&&grade>=70'>良</span>
+        <span v-else-if='grade<70&&grade>=60'>及格</span>
+        <span v-else>不及格</span>
+        </div>
+    </div>
+    </div>
+    <script>
+        let app = new Vue({
+            
+            el:'#app',
+            
+            data:{
+                show:false,
+                sex:-1,
+                grade:80,
+            },
+            methods:{
+                function(params){
+                    
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>
