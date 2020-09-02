@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-with, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+    <textarea @keypress='keyevent' readonly
+    name="" id="" cols="30" rows="10">{{content}}</textarea>
+    </div>
+    <script>
+        let app = new Vue({
+            
+            el:'#app',
+            
+            data:{
+                content:'',
+            },
+            methods:{
+                keyevent(e){
+                    // console.log(e);
+                    var inputTxt=[];
+                    if (e.shiftKey) {
+                        inputTxt.push('shift');
+                    }
+                    if(e.ctrlKey){
+                        inputTxt.push('ctrl');
+                    }
+                    inputTxt.push(e.key);
+                    console.log(inputTxt.join('+'));
+                    this.content+=inputTxt.join('+')+'\n';
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>

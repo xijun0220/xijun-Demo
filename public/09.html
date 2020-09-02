@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-with, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+    <h2>监听事件</h2>
+    <div>
+    <button @click='count+=1'>加1</button>
+    <button @click='count+=2'>加2</button>
+    </div>
+    <div>被点击了{{count}}次</div>
+    <div>
+        <h2>事件的内联方法</h2>
+        <button @click='say("hi")'>say hi</button>
+        <button @click='say("hello")'>say hello</button>
+        <button @click='say(100)'>say world 100 times</button>
+    </div>
+    <div>
+        <h2>事件的方法</h2>
+        <p @click='changeColor'>随机切换颜色</p>
+    </div>
+    <div>
+        <h2>事件修饰符</h2>
+        <div><a href="" @click.prevent='changeColor'>随机更换颜色</a>
+        <p @click.once='changeColor'>只调用一次</p>
+        <a href="" @click.prevent.once='changeColor'>随机更换颜色</a>
+        </div>
+    </div>
+    </div>
+    <script>
+        let app = new Vue({
+            
+            el:'#app',
+            
+            data:{
+                count:0,
+            },
+            methods:{
+                say(msg){
+                    if (typeof msg=='number') {
+                        for(let i=1;i<=msg;i++){
+                            console.log(i+'world');
+                        }
+                    } else {
+                        alert(msg);
+                    }
+                    
+                },
+                getRandomColor(){
+                    return `rgb(${Math.ceil(Math.random()*255)},${Math.ceil(Math.random()*255)},${Math.ceil(Math.random()*255)})`
+                },
+                changeColor(event){
+                    // event.preventDefault();
+                    console.log(event.target);
+                    event.target.style.color=this.getRandomColor();
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>

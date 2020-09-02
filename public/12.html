@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="./js/vue.min.js"></script>
+ 
+</head>
+<body>
+    <div id="app">
+    <div class="createForm">
+        添加一个todo任务:<input type="text" name="list" v-model="todoList">
+        <button type="button" v-on:click="insertInfo">创建</button>
+    </div>  
+    <table class="tab">
+        <tr>
+            <th>任务</th>
+            <th>删除</th>
+        </tr>
+        <tr v-for="(todo,index) in infoArr">
+            <td>{{todo.list}}</td>
+            <td><button v-on:click="deleteInfo(index)">删除</button></td>
+        </tr>
+    </table>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+ new Vue({
+        el:"#app",
+        data:{
+            todoList:'',
+            infoArr:[]
+        },
+        methods:{
+        //添加数据的方法
+            insertInfo(){
+                var obj={};
+                obj.list=this.todoList;
+                this.infoArr.push(obj);
+                console.log(obj);
+            },
+            //删除的方法
+            deleteInfo(index){
+                this.infoArr.splice(index,1);
+            }
+        }       
+    })
+
+</script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-with, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div><button @click='users.reverse()'>翻转</button></div>
+    <table border="1px">
+        <tr>
+            <th>序号</th>
+            <th>编号</th>
+            <th>名字</th>
+            <th>角色</th>
+        </tr>         
+        <tr v-for='(u,index) in users' :key='u.id'>
+            <td>{{index+1}}</td>
+            <td>{{u.id}}</td>
+            <td v-text='u.name'></td>
+            <td>
+                <span v-if='u.role==-1' style="color:forestgreen ;">管理员</span>
+                <span v-else-if='u.role==2'>会员</span>
+                <span v-else>作者</span>
+            </td>
+        </tr>
+    </table>
+    </div>
+    <script>
+        let app = new Vue({
+            
+            el:'#app',
+            
+            data:{
+                users:[
+                    {id:'1001',name:'张三',role:'-1'},
+                    {id:'1002',name:'张四',role:'2'},
+                    {id:'1003',name:'李三',role:'3'}
+                ]
+            },
+            methods:{
+                function(params){
+                    
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>
